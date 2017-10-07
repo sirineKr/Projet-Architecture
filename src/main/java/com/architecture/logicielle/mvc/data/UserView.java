@@ -46,7 +46,7 @@ public class UserView {
     @NotNull
     private String password;
 
-    //@NotNull
+    @NotNull
     private File photo;
 
 	public String getFirstName() {

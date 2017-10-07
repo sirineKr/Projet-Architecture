@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">Inscription</a>
+              <a class="nav-link js-scroll-trigger" href="#">Inscription</a>
             </li>
           </ul>
         </div>
@@ -47,13 +47,13 @@
                 </tr>
                 <tr>
                     <td>Statut:</td>
-                    <td>Student <input type="radio" name="x" value="Student" />
-  					Teacher<input type="radio" name="x" value="teacher" />
-  					Administrator<input type="radio" name="x" value="Administrator" /></td>
+                    <td>Student <input type="radio" name="x" value="Student" th:field="*{statut}"/>
+  					Teacher<input type="radio" name="x" value="teacher" th:field="*{statut}"/>
+  					Administrator<input type="radio" name="x" value="Administrator" th:field="*{statut}"/></td>
                 </tr>
                 <tr>
                     <td>icone:</td>
-                    <td><input type="file" /></td>
+                    <td><input type="file" th:field="*{photo}"/></td>
                 </tr>
                 <tr>
                     <td>Id:</td>

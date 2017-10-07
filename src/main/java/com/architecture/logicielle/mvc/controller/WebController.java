@@ -1,5 +1,10 @@
 package com.architecture.logicielle.mvc.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +52,14 @@ public class WebController extends WebMvcConfigurerAdapter {
 	}*/
 
 	@PostMapping("/saveUser")
-	public String greetingSubmit(@ModelAttribute UserView user) {
+	public String greetingSubmit(@ModelAttribute UserView user) throws IOException {
 		System.out.println(user.getId());
 		
 		UserEntity userEnt	=  userService.parseUser(user);
 		userRepository.save(userEnt);
+		String name= user.getPhoto().getName();
+		String path = user.getPhoto().getPath();
+		System.out.println("name: "+name+" path: "+path);
 		return "results";
 	}
 }
