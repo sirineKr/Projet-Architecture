@@ -1,4 +1,4 @@
-package com.architecture.logicielle;
+package com.architecture.logicielle.repository.entities;
 
 import java.io.File;
 import javax.validation.constraints.NotNull;
@@ -10,13 +10,13 @@ import javax.persistence.Table;
 
 @Table(name = "user")
 @Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class UserEntity {
 	
-	public User() {
+	public UserEntity() {
 		
 	}
 	
-	public User(String firstName, String lastName, String statut, String mail, Long id, String password, File photo) {
+	public UserEntity(String firstName, String lastName, String statut, String mail, Long id, String password, File photo) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;

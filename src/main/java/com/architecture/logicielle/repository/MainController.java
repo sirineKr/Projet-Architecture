@@ -1,4 +1,4 @@
-package com.architecture.logicielle;
+package com.architecture.logicielle.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.architecture.logicielle.User;
-import com.architecture.logicielle.UserRepository;
+
+import com.architecture.logicielle.repository.entities.UserEntity;
 
 
 //@Controller    // This means that this class is a Controller
@@ -23,7 +23,7 @@ public class MainController{
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 		
-		User n = new User();
+		UserEntity n = new UserEntity();
 		n.setFirstName(name);
 		n.setMail(email);
 		userRepository.save(n);
@@ -31,12 +31,12 @@ public class MainController{
 	}
 	
 	@GetMapping(path="/all")
-	public @ResponseBody Iterable<User> getAllUsers() {
+	public @ResponseBody Iterable<UserEntity> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
 	}
 	
-	public void saveINBD(User user) {
+	public void saveINBD(UserEntity user) {
 		userRepository.save(user);
 	}
 }
