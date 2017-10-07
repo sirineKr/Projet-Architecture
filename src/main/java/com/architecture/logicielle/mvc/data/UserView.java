@@ -14,6 +14,16 @@ public class UserView {
 		
 	}
 	
+	public UserView(UserView usr1, UserView usr2) {
+		usr1.firstName = usr2.firstName;
+		usr1.lastName = usr2.lastName;
+		usr1.statut = usr2.statut;
+		usr1.mail = usr2.mail;
+		usr1.id = usr2.id;
+		usr1.password = usr2.password;
+		usr1.photo = usr2.photo;
+	}
+
 	public UserView(String firstName, String lastName, String statut, String mail, Long id, String password, File photo) {
 		super();
 		this.firstName = firstName;

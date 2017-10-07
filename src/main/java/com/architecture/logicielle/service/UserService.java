@@ -6,6 +6,9 @@ import com.architecture.logicielle.repository.entities.UserEntity;
 
 public interface UserService {
 	
-	public UserEntity parseUser(UserView userview);  
+	public UserEntity parseUserViewToUserEntity(UserView userview);  
+	public UserView parseUserEntityToUserView(UserEntity userentity);
 	public void saveUser(UserEntity userEntity, UserRepository userRepository);
+	public UserEntity checkUser(UserEntity userEntity, UserRepository userRepository);
+	public UserEntity GetUserById(Long i, UserRepository userRepository);
 }

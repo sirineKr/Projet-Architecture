@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -48,20 +49,40 @@ public class WebController extends WebMvcConfigurerAdapter {
 	 */
 
 	@PostMapping("/")
-	public String InscriptionSubmit(Model model,@ModelAttribute @Valid UserView user, BindingResult bindingResult) throws IOException {
-
+	public String InscriptionSubmit(Model model,@ModelAttribute @Valid UserView user, BindingResult bindingResult){
+		model.addAttribute("user", user);
+		
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("user", user);
 			return "form";
 		} else {
-			System.out.println(user.getId());
-			UserEntity userEnt = userService.parseUser(user);
-			userService.saveUser(userEnt, userRepository);
+			UserEntity userEnt = userService.parseUserViewToUserEntity(user);
+			UserEntity userEntCheck = userService.checkUser(userEnt, userRepository);
+			if(userEntCheck == null) {
+				userService.saveUser(userEnt, userRepository);
+			}else {
+				return "form";
+			}
 			
 			String name = user.getPhoto().getName();
 			String path = user.getPhoto().getPath();
 			System.out.println("name: " + name + " path: " + path);
 			return "results";
 		}
+	}
+	
+	@GetMapping("/EditProfile")
+	public String EditProfile(Model model) {
+		UserEntity userEnt = userService.GetUserById(Long.valueOf(111), userRepository);
+		UserView user = userService.parseUserEntityToUserView(userEnt);
+		model.addAttribute("user", user);
+		return "EditUser";
+	}
+	
+	@PostMapping("/EditProfile/{userId}")
+	public String EditProfileSubmit(@PathVariable Long userId, Model model,@ModelAttribute @Valid UserView user, BindingResult bindingResult) {
+		UserEntity userEnt = userService.parseUserViewToUserEntity(user);
+		userService.saveUser(userEnt, userRepository);
+		model.addAttribute("user", new UserView());
+		return "form";
 	}
 }
