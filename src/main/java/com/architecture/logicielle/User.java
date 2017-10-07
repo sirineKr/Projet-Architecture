@@ -37,7 +37,7 @@ public class User {
 	@Column(name = "lastName")
     private String lastName;
 	
-	@NotNull
+	//@NotNull
     @Size(min=2, max=30)
 	@Column(name = "statut")
     private String statut;
@@ -54,7 +54,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @NotNull
+    //@NotNull
     @Column(name = "photo")
     private File photo;
 
