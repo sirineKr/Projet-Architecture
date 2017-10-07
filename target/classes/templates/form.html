@@ -31,37 +31,44 @@
     </nav>
  	<div class="container">
 	<h1>Inscription</h1>
-	<form action="#" th:action="@{/saveUser}" th:object="${user}" method="post">
+	<form action="#" th:action="@{/}" th:object="${user}" method="post">
             <table>
                 <tr>
                     <td>firstName:</td>
                     <td><input type="text" th:field="*{firstName}" /></td>
+                    <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error</td>
                 </tr>
                 <tr>
                     <td>lastName:</td>
                     <td><input type="text" th:field="*{lastName}"/></td>
+                    <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">LastName Error</td>
                 </tr>
                 <tr>
                     <td>Mail:</td>
                     <td><input type="text" th:field="*{mail}" /></td>
+                    <td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">Mail Error</td>
                 </tr>
                 <tr>
                     <td>Statut:</td>
                     <td>Student <input type="radio" name="x" value="Student" th:field="*{statut}"/>
   					Teacher<input type="radio" name="x" value="teacher" th:field="*{statut}"/>
   					Administrator<input type="radio" name="x" value="Administrator" th:field="*{statut}"/></td>
+  					<td th:if="${#fields.hasErrors('statut')}" th:errors="*{statut}">Statut Error</td>
                 </tr>
                 <tr>
                     <td>icone:</td>
                     <td><input type="file" th:field="*{photo}"/></td>
+                    <td th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}">photo Error</td>
                 </tr>
                 <tr>
                     <td>Id:</td>
                     <td><input type="text" th:field="*{id}" /></td>
+                    <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Error</td>
                 </tr>
                 <tr>
                     <td>Password:</td>
                     <td><input type="password" th:field="*{password}" /></td>
+                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Submit" /></td>

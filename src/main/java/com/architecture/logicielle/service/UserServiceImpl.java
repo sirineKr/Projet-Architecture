@@ -1,12 +1,16 @@
 package com.architecture.logicielle.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.architecture.logicielle.mvc.data.UserView;
+import com.architecture.logicielle.repository.UserRepository;
 import com.architecture.logicielle.repository.entities.UserEntity;
 
 public class UserServiceImpl implements UserService {
-
+	
 	@Override
 	public UserEntity parseUser(UserView userview) {
+		
 		UserEntity userEnt = new UserEntity();
 		userEnt.setFirstName(userview.getFirstName());
 		userEnt.setLastName(userview.getLastName());
@@ -17,6 +21,12 @@ public class UserServiceImpl implements UserService {
 		userEnt.setStatut(userview.getStatut());
 
 		return userEnt;
+	}
+
+	@Override
+	public void saveUser(UserEntity userEntity, UserRepository userRepository) {
+		userRepository.save(userEntity);
+		
 	}
 
 

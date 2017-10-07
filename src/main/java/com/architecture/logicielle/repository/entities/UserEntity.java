@@ -1,8 +1,6 @@
 package com.architecture.logicielle.repository.entities;
 
 import java.io.File;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,22 +25,15 @@ public class UserEntity {
 		this.photo = photo;
 	}
 
-	@NotNull
-    @Size(min=2, max=30)
 	@Column(name = "firstName")
     private String firstName;
-	
-	@NotNull
-    @Size(min=2, max=30)
+
 	@Column(name = "lastName")
     private String lastName;
 	
-	//@NotNull
-    @Size(min=2, max=30)
 	@Column(name = "statut")
     private String statut;
 
-    @NotNull
     @Column(name = "mail")
     private String mail;
     
@@ -50,11 +41,9 @@ public class UserEntity {
     @Column(name = "id")
     private Long id;
     
-    @NotNull
     @Column(name = "password")
     private String password;
 
-    //@NotNull
     @Column(name = "photo")
     private File photo;
 

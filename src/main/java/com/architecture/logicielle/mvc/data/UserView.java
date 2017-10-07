@@ -33,7 +33,7 @@ public class UserView {
     @Size(min=2, max=30)
     private String lastName;
 	
-	//@NotNull
+	@NotNull
     @Size(min=2, max=30)
     private String statut;
 
