@@ -50,6 +50,7 @@ public class WebController extends WebMvcConfigurerAdapter {
 		model.addAttribute("user", user);
 
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("ErrorMessage","Inalid from !");
 			return "inscription";
 		} else {
 			UserEntity userEnt = userService.parseUserViewToUserEntity(user);
@@ -57,12 +58,14 @@ public class WebController extends WebMvcConfigurerAdapter {
 			if (userEntCheck == null) {
 				userService.saveUser(userEnt, userRepository);
 			} else {
+				model.addAttribute("ErrorMessage","User Exist !");
 				return "inscription";
 			}
 
 			String name = user.getPhoto().getName();
 			String path = user.getPhoto().getPath();
 			System.out.println("name: " + name + " path: " + path);
+
 			return "consultUser";
 			//return "redirect:/consult/"+user.getId();
 		}

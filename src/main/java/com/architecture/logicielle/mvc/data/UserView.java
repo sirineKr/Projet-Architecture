@@ -36,7 +36,7 @@ public class UserView {
 	}
 
 	@NotNull
-    @Size(min=2, max=30)
+    @Size(min=2, max=30, message = "*Please provide a valid firstName")
     private String firstName;
 	
 	@NotNull

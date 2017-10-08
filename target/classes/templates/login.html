@@ -30,21 +30,23 @@
       </div>
     </nav>
  	<div class="container">
-	<h1>Login</h1>
+ 	<br/>
+	<h1>Sign in</h1>
+	<br/>
 	<form action="#" th:action="@{login}" th:object="${user}" method="post">
             <table>
                 <tr>
                     <td>Id:</td>
-                    <td><input type="text" th:field="*{id}" /></td>
+                    <td><input class="form-control" type="text" th:field="*{id}" /></td>
                     <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Error</td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type="password" th:field="*{password}" /></td>
+                    <td><input class="form-control" type="password" th:field="*{password}" /></td>
                     <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Submit" /></td>
+                    <td><button style="margin-top:10px" class="btn btn-default" type="submit">log in</button></td>
                 </tr>
             </table>
         </form>

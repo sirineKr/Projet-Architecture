@@ -30,22 +30,24 @@
       </div>
     </nav>
  	<div class="container">
+ 	<br/>
 	<h1>Inscription</h1>
+	<br/>
 	<form action="#" th:action="@{/}" th:object="${user}" method="post">
             <table>
                 <tr>
                     <td>firstName:</td>
-                    <td><input type="text" th:field="*{firstName}" /></td>
-                    <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName Error</td>
+                    <td><input type="text" th:field="*{firstName}" class="form-control" /></td>
+                    <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:text="${error}">FirstName Error</td>
                 </tr>
                 <tr>
                     <td>lastName:</td>
-                    <td><input type="text" th:field="*{lastName}"/></td>
+                    <td><input type="text" th:field="*{lastName}" class="form-control"/></td>
                     <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">LastName Error</td>
                 </tr>
                 <tr>
                     <td>Mail:</td>
-                    <td><input type="text" th:field="*{mail}" /></td>
+                    <td><input type="text" th:field="*{mail}" class="form-control" /></td>
                     <td th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">Mail Error</td>
                 </tr>
                 <tr>
@@ -57,24 +59,25 @@
                 </tr>
                 <tr>
                     <td>icone:</td>
-                    <td><input type="file" th:field="*{photo}"/></td>
+                    <td><input type="file" th:field="*{photo}" class="form-control" /></td>
                     <td th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}">photo Error</td>
                 </tr>
                 <tr>
                     <td>Id:</td>
-                    <td><input type="text" th:field="*{id}" /></td>
+                    <td><input type="text" th:field="*{id}" class="form-control"/></td>
                     <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Error</td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type="password" th:field="*{password}" /></td>
+                    <td><input type="password" th:field="*{password}" class="form-control" /></td>
                     <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Submit" /></td>
+                    <td><button style="margin-top:10px" class="btn btn-default" type="submit">Submit</button></td>
                 </tr>
             </table>
         </form>
+        <span th:utext="${ErrorMessage}"></span>
 </div>
  	<!-- Footer -->
     <footer class="py-3 bg-dark">
