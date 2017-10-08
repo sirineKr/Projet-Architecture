@@ -58,8 +58,8 @@
                     <td th:text=" ${userView.password}"></td>
                 </tr>
                 <tr>
-                    <td><a href="#">Editer mon profile</a></td>
-                    <td><a href="#">Supprimer mon compte</a></td>
+                    <td><a th:href="@{'/EditProfile/'+${userView.id}}" href="#">Editer mon profile</a></td>
+                    <td><a th:href="@{'/DeleteProfile/'+${userView.id}}" href="#">Supprimer mon compte</a></td>
                 </tr>
     	</table>
     	</div>

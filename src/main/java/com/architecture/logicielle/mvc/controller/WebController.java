@@ -1,7 +1,5 @@
 package com.architecture.logicielle.mvc.controller;
 
-import java.io.IOException;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,59 +28,86 @@ public class WebController extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/results").setViewName("results");
+		registry.addViewController("/login/test").setViewName("login");
 	}
+
+	/*@GetMapping("/consult/{userId}")
+	public String showForm(Model model, @PathVariable Long userId) {
+		UserEntity userEnt = userService.GetUserById(userId, userRepository);
+		UserView user = userService.parseUserEntityToUserView(userEnt);
+		model.addAttribute("userView", user);
+		return "results";
+	}*/
 
 	@GetMapping("/")
-	public String showForm(Model model) {
+	public String showFromInscription(Model model) {
 		model.addAttribute("user", new UserView());
-		return "form";
+		return "inscription";
 	}
 
-	/*
-	 * @PostMapping("/") public String checkPersonInfo(@Valid PersonForm personForm,
-	 * BindingResult bindingResult) {
-	 * 
-	 * if (bindingResult.hasErrors()) { return "form"; }
-	 * 
-	 * return "redirect:/results"; }
-	 */
-
 	@PostMapping("/")
-	public String InscriptionSubmit(Model model,@ModelAttribute @Valid UserView user, BindingResult bindingResult){
+	public String InscriptionSubmit(Model model, @ModelAttribute @Valid UserView user, BindingResult bindingResult) {
 		model.addAttribute("user", user);
-		
+
 		if (bindingResult.hasErrors()) {
-			return "form";
+			return "inscription";
 		} else {
 			UserEntity userEnt = userService.parseUserViewToUserEntity(user);
 			UserEntity userEntCheck = userService.checkUser(userEnt, userRepository);
-			if(userEntCheck == null) {
+			if (userEntCheck == null) {
 				userService.saveUser(userEnt, userRepository);
-			}else {
-				return "form";
+			} else {
+				return "inscription";
 			}
-			
+
 			String name = user.getPhoto().getName();
 			String path = user.getPhoto().getPath();
 			System.out.println("name: " + name + " path: " + path);
-			return "results";
+			return "consultUser";
+			//return "redirect:/consult/"+user.getId();
 		}
 	}
-	
-	@GetMapping("/EditProfile")
-	public String EditProfile(Model model) {
-		UserEntity userEnt = userService.GetUserById(Long.valueOf(111), userRepository);
+
+	@GetMapping("/EditProfile/{userId}")
+	public String EditProfile(@PathVariable Long userId, Model model) {
+
+		UserEntity userEnt = userService.GetUserById(userId, userRepository);
 		UserView user = userService.parseUserEntityToUserView(userEnt);
+		
 		model.addAttribute("user", user);
 		return "EditUser";
 	}
-	
+
 	@PostMapping("/EditProfile/{userId}")
-	public String EditProfileSubmit(@PathVariable Long userId, Model model,@ModelAttribute @Valid UserView user, BindingResult bindingResult) {
+	public String EditProfileSubmit(@PathVariable Long userId, Model model, @ModelAttribute @Valid UserView user,
+			BindingResult bindingResult) {
+		
+		model.addAttribute("user", user);
 		UserEntity userEnt = userService.parseUserViewToUserEntity(user);
 		userService.saveUser(userEnt, userRepository);
+		
+		return "consultUser";
+		//return "redirect:/consult/"+userId;
+	}
+
+	@GetMapping("/DeleteProfile/{userId}")
+	public String DeleteUsert(@PathVariable Long userId, Model model, @ModelAttribute UserView user) {
+
+		UserEntity userEnt = userService.GetUserById(userId, userRepository);
+		userService.deleteUser(userEnt, userRepository);
+		
+		return "redirect:/login";
+	}
+	
+	@GetMapping("/login")
+	public String showLoginForm(Model model) {
 		model.addAttribute("user", new UserView());
-		return "form";
+		return "login";
+	}
+	
+	@PostMapping("/login")
+	public String LoginFormSubmit(Model model, @ModelAttribute @Valid UserView user, BindingResult bindingResult) {
+		model.addAttribute("user", new UserView());
+		return "login";
 	}
 }

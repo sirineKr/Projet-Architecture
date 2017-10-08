@@ -53,4 +53,9 @@ public class UserServiceImpl implements UserService {
 		return userview;
 	}
 
+	@Override
+	public void deleteUser(UserEntity userEntity, UserRepository userRepository) {
+		userRepository.delete(userEntity);
+	}
+
 }

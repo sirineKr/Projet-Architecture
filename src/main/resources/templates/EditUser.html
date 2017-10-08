@@ -5,10 +5,11 @@
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
 	<!-- Bootstrap core CSS -->
-    <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link th:href="@{bootstrap/vendor/bootstrap/css/bootstrap.min.css}" href="#" rel="stylesheet"/>
 
     <!-- Custom styles for this template -->
-    <link href="bootstrap/css/modern-business.css" rel="stylesheet"/>
+    <link th:href="@{bootstrap/css/modern-business.css}" href="#" rel="stylesheet"/>
+    
 		
 	</head>
     <body>
@@ -23,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">Inscription</a>
+              <a class="nav-link js-scroll-trigger"  href="#">Inscription</a>
             </li>
           </ul>
         </div>
@@ -67,7 +68,7 @@
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><input type="password" th:field="*{password}" /></td>
+                    <td><input type="text" th:field="*{password}" /></td>
                     <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
                 </tr>
                 <tr>
