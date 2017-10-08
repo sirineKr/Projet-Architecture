@@ -14,15 +14,15 @@ public class UserEntity {
 		
 	}
 	
-	public UserEntity(String firstName, String lastName, String statut, String mail, Long id, String password, File photo) {
+	public UserEntity(String firstName, String lastName, String statut, String mail, String password, File photo, Long username) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.statut = statut;
-		this.mail = mail;
-		this.id = id;
+		this.email = mail;
 		this.password = password;
 		this.photo = photo;
+		this.username = username;
 	}
 
 	@Column(name = "firstName")
@@ -31,15 +31,15 @@ public class UserEntity {
 	@Column(name = "lastName")
     private String lastName;
 	
+	@Id
+	@Column(name = "username")
+	private Long username;
+	
 	@Column(name = "statut")
     private String statut;
 
-    @Column(name = "mail")
-    private String mail;
-    
-    @Id
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "email")
+    private String email;
     
     @Column(name = "password")
     private String password;
@@ -72,19 +72,11 @@ public class UserEntity {
 	}
 
 	public String getMail() {
-		return mail;
+		return email;
 	}
 
 	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		this.email = mail;
 	}
 
 	public String getPassword() {
@@ -106,5 +98,21 @@ public class UserEntity {
 	@Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
+
+	public Long getUsername() {
+		return username;
+	}
+
+	public void setUsername(Long username) {
+		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

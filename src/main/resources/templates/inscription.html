@@ -33,7 +33,7 @@
  	<br/>
 	<h1>Inscription</h1>
 	<br/>
-	<form action="#" th:action="@{/}" th:object="${user}" method="post">
+	<form action="#" th:action="@{/inscription}" th:object="${user}" method="post">
             <table>
                 <tr>
                     <td>firstName:</td>
@@ -64,8 +64,8 @@
                 </tr>
                 <tr>
                     <td>Id:</td>
-                    <td><input type="text" th:field="*{id}" class="form-control"/></td>
-                    <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Id Error</td>
+                    <td><input type="text" th:field="*{username}" class="form-control"/></td>
+                    <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Id Error</td>
                 </tr>
                 <tr>
                     <td>Password:</td>

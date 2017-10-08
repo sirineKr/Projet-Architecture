@@ -12,7 +12,7 @@ public class UserServiceImpl implements UserService {
 		UserEntity userEnt = new UserEntity();
 		userEnt.setFirstName(userview.getFirstName());
 		userEnt.setLastName(userview.getLastName());
-		userEnt.setId(userview.getId());
+		userEnt.setUsername(userview.getUsername());
 		userEnt.setMail(userview.getMail());
 		userEnt.setPassword(userview.getPassword());
 		userEnt.setPhoto(userview.getPhoto());
@@ -29,13 +29,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserEntity checkUser(UserEntity userEntity, UserRepository userRepository) {
 		UserEntity user = new UserEntity();
-		user = userRepository.findOne(userEntity.getId());
+		user = userRepository.findOne(userEntity.getUsername());
 		return user;
 	}
 
 	@Override
 	public UserEntity GetUserById(Long id, UserRepository userRepository) {
 		return userRepository.findOne(id);
+		
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService {
 		UserView userview = new UserView();
 		userview.setFirstName(userentity.getFirstName());
 		userview.setLastName(userentity.getLastName());
-		userview.setId(userentity.getId());
+		userview.setUsername(userentity.getUsername());
 		userview.setMail(userentity.getMail());
 		userview.setPassword(userentity.getPassword());
 		userview.setPhoto(userentity.getPhoto());

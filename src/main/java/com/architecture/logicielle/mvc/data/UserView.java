@@ -18,19 +18,18 @@ public class UserView {
 		usr1.firstName = usr2.firstName;
 		usr1.lastName = usr2.lastName;
 		usr1.statut = usr2.statut;
-		usr1.mail = usr2.mail;
-		usr1.id = usr2.id;
+		usr1.email = usr2.email;
 		usr1.password = usr2.password;
 		usr1.photo = usr2.photo;
 	}
 
-	public UserView(String firstName, String lastName, String statut, String mail, Long id, String password, File photo) {
+	public UserView(String firstName, String lastName, String statut, String mail, String password, File photo, Long username) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.statut = statut;
-		this.mail = mail;
-		this.id = id;
+		this.email = mail;
+		this.username = username;
 		this.password = password;
 		this.photo = photo;
 	}
@@ -43,15 +42,24 @@ public class UserView {
     @Size(min=2, max=30)
     private String lastName;
 	
+	@Id
+    private Long username;
+	
+	public Long getUsername() {
+		return username;
+	}
+
+	public void setUsername(Long username) {
+		this.username = username;
+	}
+
 	@NotNull
     @Size(min=2, max=30)
     private String statut;
 
     @NotNull
-    private String mail;
-    
-    @Id
-    private Long id;
+    private String email;
+
     
     @NotNull
     private String password;
@@ -84,19 +92,11 @@ public class UserView {
 	}
 
 	public String getMail() {
-		return mail;
+		return email;
 	}
 
 	public void setMail(String mail) {
-		this.mail = mail;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		this.email = mail;
 	}
 
 	public String getPassword() {

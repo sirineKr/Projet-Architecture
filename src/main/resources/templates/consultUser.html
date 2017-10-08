@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">déconnexion</a>
+              <a class="nav-link js-scroll-trigger" th:href="@{/logout}" href="#">déconnexion</a>
             </li>
           </ul>
         </div>
@@ -50,16 +50,16 @@
                     <td th:text=" ${userView.statut}"></td>
                 </tr>
                 <tr>
-                    <td>Id:</td>
-                    <td th:text=" ${userView.id}"></td>
+                    <td>Identifiant:</td>
+                    <td th:text=" ${userView.username}"></td>
                 </tr>
                 <tr>
                     <td>Password:</td>
                     <td th:text=" ${userView.password}"></td>
                 </tr>
                 <tr>
-                    <td><a th:href="@{'/EditProfile/'+${userView.id}}" href="#">Editer mon profile</a></td>
-                    <td><a th:href="@{'/DeleteProfile/'+${userView.id}}" href="#">Supprimer mon compte</a></td>
+                    <td><a th:href="@{'/EditProfile/'+${userView.username}}" href="#">Editer mon profile</a></td>
+                    <td><a th:href="@{'/DeleteProfile/'+${userView.username}}" href="#">Supprimer mon compte</a></td>
                 </tr>
     	</table>
     	</div>
