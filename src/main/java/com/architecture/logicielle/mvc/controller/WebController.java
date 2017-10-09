@@ -60,7 +60,7 @@ public class WebController extends WebMvcConfigurerAdapter {
 	
 	@GetMapping("/inscription")
 	public String showFromInscription(Model model) {
-		model.addAttribute("userView", new UserView());
+		model.addAttribute("user", new UserView());
 		return "inscription";
 	}
 
