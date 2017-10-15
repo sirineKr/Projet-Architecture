@@ -10,20 +10,12 @@ sur l'autre.
 
 ## Fonctionnement de développement
 
-Marc Petit est à la fois Client et Chef de projet.
-Le développement se fera sous forme de sprint de une semaine.
-La promotion de 25 est divisée en groupes de 3 (un groupe de 4).
-Chaque semaine, une équipe aura un sprint de rédaction, elle rédigera de la 
-documentation, des spécifications ou tout autre document nécessaire à la poursuite 
-du projet.
-Une autre équipe aura un sprint de développement et devra un certain nombre de 
-fonctionnalités.
-Chaque début de semaine, un point est fait sur le travail réalisé par les équipes 
-sortant de sprint, les tests sont réalisés par l'ensemble de la promotion et 
-le sprint suivant est proposé.
-Chaque équipe doit réalisé un sprint de rédaction et un sprint de développement. 
-Aucun sprint n'est imposé, une équipe doit se porter volontaire et demander 
-confirmation pour réaliser le sprint à Marc Petit.
+- Client : Marc Petit.
+- Chef de projet : Marc Petit.
+- Sprints de une semaine.
+- Équipes de 3 à 4 étudiants.
+- 2 sprints en simultanée : rédaction et développement.
+- Point hebdomadaire.
 
 ## Objectifs
 
@@ -44,7 +36,7 @@ Sont nécessaire comme outils :
 ## Configuration de l'environnement de travail
 
 Étape 1 :
-Télécharger le projet : [Dépôt GitHub de SOSIE2](https://github.com/marcpetit/SOSIE2)
+Télécharger le projet : [Dépôt GitHub de SOSIE2](https://github.com/marcpetit/SOSIE2).
 
 Étape 2 :
 Dans Eclipe, faire *import existing maven projects* et mettre le projet.
@@ -52,9 +44,9 @@ Dans Eclipe, faire *import existing maven projects* et mettre le projet.
 Étape 3:
 Créer une base de données et un utilisateur avec les commandes suivantes :
 
-	mysql &gt; create database architecture;
-	mysql &gt; create user 'admin'@'localhost' identified by ‘admin’;
-	mysql &gt; grant all on architecture.* to 'admin'@'localhost';
+	mysql > create database architecture;
+	mysql > create user 'admin'@'localhost' identified by ‘admin’;
+	mysql > grant all on architecture.* to 'admin'@'localhost';
 
 Étape 4 :
 Changer le fichier "src/main/resources/application.properties" : pour le premier lancement de l'application, il faut changer l'instruction "spring.jpa.hibernate.ddl-auto=update" par "spring.jpa.hibernate.ddl-auto=create". Après, vous pouvez mettre "upade" sinon, à chaque run de l'application, la base de données va être initialiser (vide).
@@ -65,9 +57,10 @@ Changer le fichier "src/main/resources/application.properties" : pour le premier
 Faire *run as* -> *Spring Boot App*.
 
 Étape 2 :
-Sur votre navigateur, allez sur [localhost:8080/](localhost:8080/).
+Sur votre navigateur, allez sur [localhost:8080/](http://localhost:8080/).
 
 ## Contributeurs au projet
 
 Référent : Marc Petit
+
 Promotion IATIC5 (2017-2018)
