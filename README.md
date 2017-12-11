@@ -29,9 +29,21 @@ client et de l'avancée du développement.
 ## Installation de l'environnement de travail
 
 Sont nécessaire comme outils :
-- Eclipse
-- Plugin Maven
+- Eclipse (Oxygen)
+- Maven [plugin]
 - MySQL
+- Data Tool Set [plugin]
+
+Pour installer les plugins supplémentaires, aller dans le menu *Help > Install New Software...*.
+À côté du champ *work with*, cliquer sur *Add...* et ajouter le lien du dépôt d'oxygen pour les logiciels liés : 
+[](http://download.eclipse.org/releases/oxygen).
+
+Pour le *Data Tool Set*, cocher la case *Database Development* puis terminer la procédure pour lancer l'installation. 
+Un redémarrage d'Eclipse peut être nécessaire.
+
+**En cas d'erreur - "aucun site disponible à cette adresse"**
+Dans la même fenêtre, cliquer en haut à droite sur *Manage...*, vérifier à gauche d'être dans *Install/Update > Available Software Sites*, 
+sélectionner chaque nom et cliquer sur *Reload* à droite puis valider en cliquant sur *Apply and Close*.
 
 ## Configuration de l'environnement de travail
 
@@ -42,6 +54,8 @@ Télécharger le projet : [Dépôt GitHub de SOSIE2](https://github.com/marcpeti
 Dans Eclipe, faire *import existing maven projects* et mettre le projet.
 
 Étape 3:
+Afficher le *Data Source Explorer* : aller dans *Window > Show View > Other...* puis sélectionner *Data Management > Data Source Explorer*.
+Changer la perspective : *Window > Perspective > 
 Créer une base de données et un utilisateur avec les commandes suivantes :
 
 	mysql > create database architecture;
